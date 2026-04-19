@@ -1,15 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const navItems = [
   { id: 'hero', label: { fr: 'Accueil', en: 'Home' } },
   { id: 'about', label: { fr: 'À propos', en: 'About' } },
-  { id: 'skills', label: { fr: 'Compétences', en: 'Skills' } },
   { id: 'experience', label: { fr: 'Expérience', en: 'Experience' } },
-  { id: 'projects', label: { fr: 'Projets', en: 'Projects' } },
   { id: 'contact', label: { fr: 'Contact', en: 'Contact' } },
 ];
 
@@ -101,6 +101,18 @@ export default function Navigation() {
             </div>
 
             <div className="flex items-center gap-3">
+              {/* Modern Mode Button */}
+              <Link href="/" className="hidden lg:flex">
+                <motion.button
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[#00D4FF] text-sm font-medium hover:bg-[#00D4FF]/20 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>Modern</span>
+                </motion.button>
+              </Link>
+              
               <button
                 onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
                 className="w-10 h-10 rounded-lg bg-[#00D4FF]/10 border border-[#00D4FF]/30 flex items-center justify-center text-[#00D4FF] text-sm font-semibold cursor-hover hover:bg-[#00D4FF]/20 transition-colors"
@@ -162,6 +174,20 @@ export default function Navigation() {
                 {item.label[lang]}
               </motion.button>
             ))}
+            
+            {/* Mobile Modern Mode Button */}
+            <Link href="/" className="mt-2">
+              <motion.button
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[#00D4FF] text-base font-medium"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -10 }}
+                transition={{ delay: navItems.length * 0.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Sparkles className="w-5 h-5" />
+                <span>Mode Modern</span>
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </motion.div>

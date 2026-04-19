@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from './modern/contexts/LanguageContext';
 import HorizontalNav from './modern/components/HorizontalNav';
-import SectionDots from './modern/components/SectionDots';
 import FloatingShapes from './modern/components/FloatingShapes';
 import WelcomeDialog from './modern/components/WelcomeDialog';
 import LinkedInQRCode from './modern/components/LinkedInQRCode';
@@ -23,10 +22,13 @@ const sections = [
 export default function Home() {
   const [activeSection, setActiveSection] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const { lang } = useLanguage();
 
   // Check for mobile viewport
   useEffect(() => {
+    setIsMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 1024);
     };
@@ -40,8 +42,15 @@ export default function Home() {
   const navigateToSection = useCallback((index: number) => {
     if (index >= 0 && index < sections.length) {
       setActiveSection(index);
+      // On mobile, scroll to the section
+      if (isMobile && containerRef.current) {
+        const sectionElements = containerRef.current.querySelectorAll('.mobile-section');
+        if (sectionElements[index]) {
+          sectionElements[index].scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
-  }, []);
+  }, [isMobile]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -95,13 +104,39 @@ export default function Home() {
 
   const CurrentSection = sections[activeSection].component;
 
+  // Handle scroll on mobile to update active section
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Calculate which section is currently in view
+      const sectionIndex = Math.round(scrollPosition / windowHeight);
+      if (sectionIndex >= 0 && sectionIndex < sections.length && sectionIndex !== activeSection) {
+        setActiveSection(sectionIndex);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile, activeSection]);
+
   // Handle explore from welcome dialog
   const handleExplore = () => {
     navigateToSection(1); // Go to about section
   };
 
+  // Prevent hydration mismatch
+  if (!isMounted) {
+    return null;
+  }
+
   return (
-    <div className="modern-portfolio">
+    <div className={`modern-portfolio ${isMobile ? 'mobile' : ''}`}>
       {/* Welcome Dialog */}
       <WelcomeDialog onExplore={handleExplore} />
 
@@ -114,25 +149,19 @@ export default function Home() {
         onNavigate={navigateToSection} 
       />
 
-      {/* Section Indicators */}
-      {!isMobile && (
-        <SectionDots
-          activeSection={activeSection}
-          onNavigate={navigateToSection}
-          totalSections={sections.length}
-        />
-      )}
-
       {/* Background Shapes */}
       <FloatingShapes />
 
       {/* Main Content Container */}
-      <div className="relative h-screen w-screen overflow-hidden">
+      <div 
+        ref={containerRef}
+        className={`relative ${isMobile ? 'h-auto min-h-screen overflow-y-auto overflow-x-hidden' : 'h-screen w-screen overflow-hidden'}`}
+      >
         {/* Horizontal Slide Container */}
         <motion.div
-          className="flex h-full"
-          animate={{
-            x: isMobile ? 0 : `-${activeSection * 100}vw`,
+          className={`${isMobile ? 'flex flex-col' : 'flex h-full'}`}
+          animate={isMobile ? {} : {
+            x: `-${activeSection * 100}vw`,
           }}
           transition={{
             type: "spring",
@@ -140,26 +169,26 @@ export default function Home() {
             damping: 30,
             mass: 1,
           }}
-          style={{
-            width: isMobile ? '100%' : `${sections.length * 100}vw`,
+          style={isMobile ? {} : {
+            width: `${sections.length * 100}vw`,
           }}
         >
           {isMobile ? (
-            // Mobile: Vertical scroll
-            <div className="w-full h-full overflow-y-auto">
-              <div className="min-h-screen" key={`hero-${lang}`}>
+            // Mobile: Vertical scroll sections
+            <>
+              <div className="mobile-section min-h-screen w-full" key={`hero-${lang}`}>
                 <HeroSection onNavigate={navigateToSection} />
               </div>
-              <div className="min-h-screen" key={`about-${lang}`}>
+              <div className="mobile-section min-h-screen w-full" key={`about-${lang}`}>
                 <AboutSection />
               </div>
-              <div className="min-h-screen" key={`projects-${lang}`}>
+              <div className="mobile-section min-h-screen w-full" key={`projects-${lang}`}>
                 <ProjectsSection />
               </div>
-              <div className="min-h-screen" key={`contact-${lang}`}>
+              <div className="mobile-section min-h-screen w-full" key={`contact-${lang}`}>
                 <ContactSection />
               </div>
-            </div>
+            </>
           ) : (
             // Desktop: Horizontal slide
             <>
@@ -178,25 +207,6 @@ export default function Home() {
             </>
           )}
         </motion.div>
-
-        {/* Slide Indicators */}
-        {!isMobile && (
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50">
-            {sections.map((section, index) => (
-              <motion.button
-                key={section.id}
-                onClick={() => navigateToSection(index)}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  activeSection === index
-                    ? 'w-8 bg-[#ffa101]'
-                    : 'w-2 bg-white/30 hover:bg-white/50'
-                }`}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              />
-            ))}
-          </div>
-        )}
 
         {/* Section Label */}
         <AnimatePresence mode="wait">

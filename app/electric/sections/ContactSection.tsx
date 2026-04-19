@@ -1,11 +1,40 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Send, MapPin } from 'lucide-react';
+import { Mail, Send, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useState, useRef, FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
   const { t, lang } = useLanguage();
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setIsLoading(true);
+    setStatus('idle');
+
+    try {
+      await emailjs.sendForm(
+        'service_33zjx9o',
+        'template_vyjpq2n',
+        formRef.current,
+        '7Whawi2tv9mv5v3cT'
+      );
+      setStatus('success');
+      formRef.current.reset();
+    } catch (error: any) {
+      console.error('EmailJS Error:', error);
+      setStatus('error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section id="contact" className="relative min-h-screen flex items-center justify-center px-6 lg:px-12 py-20 overflow-hidden">
@@ -141,42 +170,84 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <form className="glass-card-electric rounded-2xl p-8 space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="glass-card-electric rounded-2xl p-8 space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-white/70 text-sm">{t.contact.name}</label>
                   <input
                     type="text"
+                    name="name"
                     className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-[#00D4FF] focus:outline-none transition-colors"
                     placeholder={lang === 'fr' ? 'Votre nom' : 'Your name'}
+                    required
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-white/70 text-sm">{t.contact.email}</label>
                   <input
                     type="email"
+                    name="email"
                     className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-[#00D4FF] focus:outline-none transition-colors"
                     placeholder={lang === 'fr' ? 'votre@email.com' : 'your@email.com'}
+                    required
                   />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-white/70 text-sm">{lang === 'fr' ? 'Sujet' : 'Subject'}</label>
+                <input
+                  type="text"
+                  name="subject"
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-[#00D4FF] focus:outline-none transition-colors"
+                  placeholder={lang === 'fr' ? 'Discussion de projet' : 'Project discussion'}
+                  required
+                />
               </div>
 
               <div className="space-y-2">
                 <label className="text-white/70 text-sm">{t.contact.message}</label>
                 <textarea
                   rows={5}
+                  name="message"
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-[#00D4FF] focus:outline-none transition-colors resize-none"
                   placeholder={lang === 'fr' ? 'Votre message...' : 'Your message...'}
+                  required
                 />
               </div>
 
-              <button
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-green-400 text-sm"
+                >
+                  <CheckCircle className="w-4 h-4" />
+                  {lang === 'fr' ? 'Message envoyé avec succès !' : 'Message sent successfully!'}
+                </motion.div>
+              )}
+
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-red-400 text-sm"
+                >
+                  <AlertCircle className="w-4 h-4" />
+                  {lang === 'fr' ? 'Erreur lors de l\'envoi. Réessayez.' : 'Error sending. Please try again.'}
+                </motion.div>
+              )}
+
+              <motion.button
                 type="submit"
-                className="btn-electric w-full flex items-center justify-center gap-2 cursor-hover"
+                disabled={isLoading}
+                className="btn-electric w-full flex items-center justify-center gap-2 cursor-hover disabled:opacity-50 disabled:cursor-not-allowed"
+                whileHover={{ scale: isLoading ? 1 : 1.02 }}
+                whileTap={{ scale: isLoading ? 1 : 0.98 }}
               >
-                <Send className="w-5 h-5" />
-                {t.contact.send}
-              </button>
+                {isLoading ? (lang === 'fr' ? 'Envoi en cours...' : 'Sending...') : t.contact.send}
+                <Send className={`w-5 h-5 ${isLoading ? '' : 'group-hover:translate-x-1'}`} />
+              </motion.button>
             </form>
           </motion.div>
         </div>

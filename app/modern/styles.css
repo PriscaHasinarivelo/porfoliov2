@@ -519,14 +519,104 @@
     width: 100%;
     height: auto;
     min-height: 100vh;
+    padding: 80px 16px 40px;
+    overflow: visible;
   }
   
   .modern-portfolio {
     overflow-y: auto;
     overflow-x: hidden;
+    height: auto;
+  }
+  
+  .modern-portfolio.mobile {
+    height: auto;
+    min-height: 100vh;
   }
   
   .section-dots {
+    display: none;
+  }
+  
+  /* Mobile section adjustments */
+  .mobile-section {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+  
+  /* Adjust stat cards for mobile */
+  .stat-card {
+    padding: 12px 16px;
+    font-size: 0.875rem;
+  }
+  
+  .stat-card .text-3xl {
+    font-size: 1.5rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 640px) {
+  .section-panel {
+    padding: 70px 12px 30px;
+  }
+  
+  .mobile-section {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+  
+  /* Reduce photo size on mobile */
+  .photo-orbit-container {
+    width: 280px;
+    height: 280px;
+  }
+  
+  /* Adjust orbit rings */
+  .orbit-ring-1 {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .orbit-ring-2 {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .orbit-ring-3 {
+    width: 160px;
+    height: 160px;
+  }
+  
+  /* Adjust stat card positions for mobile */
+  .stat-card {
+    padding: 8px 12px;
+  }
+  
+  /* Make buttons more touch-friendly */
+  .btn-modern {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  .social-icon-modern {
+    width: 44px;
+    height: 44px;
+  }
+  
+  /* Adjust project cards */
+  .project-card-modern {
+    padding: 16px;
+  }
+}
+
+/* Hide floating shapes on mobile for performance */
+@media (max-width: 768px) {
+  .float-shape,
+  .orbit-element,
+  .orbit-element-reverse {
     display: none;
   }
 }

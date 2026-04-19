@@ -37,8 +37,12 @@ export default function HeroSection() {
               transition={{ delay: 0.3, duration: 0.6 }}
             >
               <span className="text-white">{t.hero.role}</span>
-              <br />
-              <span className="gradient-text-electric">Prisca</span>
+              {t.hero.role2 && (
+                <>
+                  <br />
+                  <span className="gradient-text-electric">{t.hero.role2}</span>
+                </>
+              )}
             </motion.h1>
 
             <motion.p
@@ -97,18 +101,19 @@ export default function HeroSection() {
               transition={{ delay: 0.8 }}
             >
               <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold gradient-text-electric">50+</div>
-                <div className="text-sm text-white/50">{t.projects.title2}</div>
+                <div className="text-3xl lg:text-4xl font-bold gradient-text-electric">3</div>
+                <div className="text-sm text-white/50">{t.about.stats.projects}</div>
+                <div className="text-xs text-white/30">{lang === 'fr' ? 'Complexes' : 'Complex'}</div>
               </div>
               <div className="w-px h-12 bg-white/10" />
               <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold gradient-text-electric">5+</div>
-                <div className="text-sm text-white/50">{t.stats.experience}</div>
+                <div className="text-3xl lg:text-4xl font-bold gradient-text-electric">6</div>
+                <div className="text-sm text-white/50">{t.about.stats.years}</div>
               </div>
               <div className="w-px h-12 bg-white/10" />
               <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold gradient-text-electric">30+</div>
-                <div className="text-sm text-white/50">{t.stats.clients}</div>
+                <div className="text-3xl lg:text-4xl font-bold gradient-text-electric">3</div>
+                <div className="text-sm text-white/50">{t.about.stats.clients}</div>
               </div>
             </motion.div>
           </motion.div>
@@ -161,7 +166,7 @@ export default function HeroSection() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#0A0F1A]/50 to-transparent" />
+                  <div className="absolute inset-0 rounded-full bg-linear-to-t from-[#0A0F1A]/50 to-transparent" />
                 </div>
               </motion.div>
 

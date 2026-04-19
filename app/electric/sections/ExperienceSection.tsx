@@ -6,22 +6,22 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const experienceData = [
   {
-    role: 'Senior Full Stack Developer',
-    company: 'Tech Solutions Inc.',
-    period: '2022 - Present',
-    description: 'Leading development of enterprise web applications',
+    role: 'JAVA/Scala Developer',
+    company: 'YAS Madagascar – TELCO OI La Réunion – Group AXIAN',
+    period: 'May 2025 – Present',
+    description: 'Development of JAVA/Scala applications for TELCO group',
   },
   {
-    role: 'Full Stack Developer',
-    company: 'Digital Agency',
-    period: '2020 - 2022',
-    description: 'Built scalable applications for diverse clients',
+    role: 'Software Engineer',
+    company: 'SNEDAMADA / Soprasteria Nantes',
+    period: 'Mar 2020 – Jun 2024',
+    description: 'Design and development of enterprise solutions',
   },
   {
     role: 'Junior Developer',
-    company: 'StartUp Hub',
-    period: '2019 - 2020',
-    description: 'Started journey in web development',
+    company: 'EASY PARK / FUNRECO',
+    period: 'Mar 2019 – Jan 2020',
+    description: 'First experience in web development',
   },
 ];
 
@@ -42,9 +42,9 @@ export default function ExperienceSection() {
   const { t, lang } = useLanguage();
   
   const experience = lang === 'fr' ? [
-    { role: 'Développeuse Full Stack Senior', company: 'Tech Solutions Inc.', period: '2022 - Présent', description: 'Direction du développement d\'applications web enterprise' },
-    { role: 'Développeuse Full Stack', company: 'Agence Digitale', period: '2020 - 2022', description: 'Construction d\'applications évolutives pour divers clients' },
-    { role: 'Développeuse Junior', company: 'StartUp Hub', period: '2019 - 2020', description: 'Début du parcours en développement web' },
+    { role: 'Développeur JAVA/Scala', company: 'YAS Madagascar – TELCO OI La Réunion – Group AXIAN', period: 'Mai 2025 – Aujourd\'hui', description: 'Développement d\'applications JAVA/Scala pour le groupe TELCO' },
+    { role: 'Ingénieur d\'étude et de développement', company: 'SNEDAMADA / Soprasteria Nantes', period: 'Mars 2020 – Juin 2024', description: 'Conception et développement de solutions d\'entreprise' },
+    { role: 'Développeur Junior', company: 'EASY PARK / FUNRECO', period: 'Mars 2019 – Janvier 2020', description: 'Première expérience en développement web' },
   ] : experienceData;
 
   return (
@@ -75,7 +75,7 @@ export default function ExperienceSection() {
 
         <div className="relative">
           <motion.div
-            className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#00D4FF] via-[#7B61FF] to-transparent hidden lg:block"
+            className="absolute left-8 top-0 bottom-0 w-px bg-linear-to-b from-[#00D4FF] via-[#7B61FF] to-transparent hidden lg:block"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}

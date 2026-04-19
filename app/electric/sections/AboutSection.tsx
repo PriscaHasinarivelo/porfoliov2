@@ -1,16 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code, Database, Globe, Smartphone, Palette, Server } from 'lucide-react';
+import { Code, Database, Globe, Smartphone, Palette, Server, Sparkles, Zap } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const skills = [
-  { name: 'React / Next.js', level: 95, icon: Code },
-  { name: 'Java / Spring Boot', level: 90, icon: Server },
-  { name: 'Node.js / Express', level: 88, icon: Database },
-  { name: 'Mobile / React Native', level: 85, icon: Smartphone },
-  { name: 'UI/UX Design', level: 80, icon: Palette },
-  { name: 'DevOps / Cloud', level: 75, icon: Globe },
+  { name: 'JAVA', level: 85, icon: Server },
+  { name: 'React', level: 70, icon: Code },
+  { name: 'DevOps', level: 55, icon: Globe },
+  { name: 'UI/UX Design', level: 70, icon: Palette },
+  { name: 'AI Utils', level: 50, icon: Sparkles },
+  { name: 'DataBase', level: 90, icon: Database },
 ];
 
 const containerVariants = {
@@ -75,16 +75,22 @@ export default function AboutSection() {
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-6 pt-6">
               <div className="glass-card-electric rounded-2xl p-6 text-center min-w-[120px]">
-                <div className="text-4xl font-bold gradient-text-electric">50+</div>
-                <div className="text-sm text-white/60 mt-1">{t.about.stats.projects}</div>
+                <div className="w-12 h-12 rounded-xl bg-[#00D4FF]/10 flex items-center justify-center mx-auto mb-3">
+                  <Server className="w-6 h-6 text-[#00D4FF]" />
+                </div>
+                <div className="text-sm text-white/60 mt-1">JAVA</div>
               </div>
               <div className="glass-card-electric rounded-2xl p-6 text-center min-w-[120px]">
-                <div className="text-4xl font-bold gradient-text-electric">5+</div>
-                <div className="text-sm text-white/60 mt-1">{t.about.stats.years}</div>
+                <div className="w-12 h-12 rounded-xl bg-[#7B61FF]/10 flex items-center justify-center mx-auto mb-3">
+                  <Database className="w-6 h-6 text-[#7B61FF]" />
+                </div>
+                <div className="text-sm text-white/60 mt-1">{lang === 'fr' ? 'Base de données' : 'Database'}</div>
               </div>
               <div className="glass-card-electric rounded-2xl p-6 text-center min-w-[120px]">
-                <div className="text-4xl font-bold gradient-text-electric">30+</div>
-                <div className="text-sm text-white/60 mt-1">{t.about.stats.clients}</div>
+                <div className="w-12 h-12 rounded-xl bg-[#00FF94]/10 flex items-center justify-center mx-auto mb-3">
+                  <Zap className="w-6 h-6 text-[#00FF94]" />
+                </div>
+                <div className="text-sm text-white/60 mt-1">Agile</div>
               </div>
             </motion.div>
           </motion.div>

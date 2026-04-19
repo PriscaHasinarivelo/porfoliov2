@@ -165,7 +165,7 @@ export default function LinkedInQRCode({ activeSection }: LinkedInQRCodeProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 2 }}
           >
-            <span className="text-white/40 text-xs bg-black/40 px-2 py-1 rounded-full backdrop-blur-sm">
+            <span className="text-xs px-2 py-1 rounded-full backdrop-blur-sm bg-[#ffa101]/90 text-[#31525b] font-medium shadow-lg">
               Cliquez pour agrandir
             </span>
           </motion.div>

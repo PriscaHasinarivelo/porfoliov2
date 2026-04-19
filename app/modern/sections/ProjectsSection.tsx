@@ -133,25 +133,25 @@ export default function ProjectsSection() {
   ];
   
   return (
-    <section className="section-panel flex items-center justify-center px-8 lg:px-16 pt-20">
+    <section className="section-panel flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-16 sm:pt-20">
       <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <motion.div
-          className="mb-12 mt-8"
+          className="mb-8 sm:mb-12 mt-4 sm:mt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-[#ffa101] font-medium tracking-wider text-sm block mb-3">{t('projects.subtitle')}</span>
-          <h2 className="text-4xl lg:text-5xl font-bold">
+          <span className="text-[#ffa101] font-medium tracking-wider text-xs sm:text-sm block mb-2 sm:mb-3">{t('projects.subtitle')}</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
             {t('projects.title1')} <span className="gradient-text-orange">{t('projects.title2')}</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Projects Grid - Takes 2 columns */}
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+          {/* Projects Grid - Takes 2 columns on desktop */}
           <motion.div
-            className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-3 gap-4"
+            className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -161,31 +161,32 @@ export default function ProjectsSection() {
               <motion.div
                 key={project.title}
                 variants={itemVariants}
-                className="project-card-modern group cursor-pointer p-4"
-                whileHover={{ y: -5 }}
+                className="project-card-modern group cursor-pointer p-3 sm:p-4"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-start justify-between mb-2">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ffa101] to-[#ff7b35] flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-linear-to-br from-[#ffa101] to-[#ff7b35] flex items-center justify-center text-white font-bold text-xs sm:text-sm">
                     {project.image}
                   </div>
                   <motion.div
-                    className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/5 flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <ArrowUpRight className="w-4 h-4 text-[#ffa101]" />
+                    <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#ffa101]" />
                   </motion.div>
                 </div>
-                <span className="text-[#ffa101] text-xs font-medium">{project.category}</span>
-                <h3 className="text-sm font-semibold text-white mt-1 mb-1 leading-tight">{project.title}</h3>
-                <p className="text-white/50 text-xs mb-2 line-clamp-2">{project.description}</p>
-                <span className="text-white/30 text-[10px]">{project.year}</span>
+                <span className="text-[#ffa101] text-[10px] sm:text-xs font-medium">{project.category}</span>
+                <h3 className="text-xs sm:text-sm font-semibold text-white mt-1 mb-1 leading-tight">{project.title}</h3>
+                <p className="text-white/50 text-[10px] sm:text-xs mb-2 line-clamp-2">{project.description}</p>
+                <span className="text-white/30 text-[9px] sm:text-[10px]">{project.year}</span>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Experience Timeline - Takes 1 column */}
+          {/* Experience Timeline - Takes 1 column on desktop */}
           <motion.div
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6 mt-6 lg:mt-0"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -193,30 +194,30 @@ export default function ProjectsSection() {
           >
             <motion.h3
               variants={itemVariants}
-              className="text-2xl font-semibold text-white mb-6"
+              className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6"
             >
               {t('projects.experienceTitle')}
             </motion.h3>
             
-            <div className="relative pl-6 border-l-2 border-[#ffa101]/20 space-y-8">
+            <div className="relative pl-4 sm:pl-6 border-l-2 border-[#ffa101]/20 space-y-4 sm:space-y-6 lg:space-y-8">
               {experience.map((exp, index) => (
                 <motion.div
                   key={exp.role}
                   variants={itemVariants}
                   className="relative"
                 >
-                  <div className="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-[#ffa101] border-4 border-[#31525b]" />
-                  <div className="glass-card-modern p-4 hover:border-[#ffa101]/50 transition-colors">
-                    <div className="flex items-center gap-2 text-[#ffa101] text-sm mb-1">
-                      <Calendar className="w-4 h-4" />
+                  <div className="absolute -left-6 sm:-left-7 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#ffa101] border-2 sm:border-4 border-[#31525b]" />
+                  <div className="glass-card-modern p-3 sm:p-4 hover:border-[#ffa101]/50 transition-colors">
+                    <div className="flex items-center gap-2 text-[#ffa101] text-xs sm:text-sm mb-1">
+                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                       {exp.period}
                     </div>
-                    <h4 className="text-lg font-semibold text-white">{exp.role}</h4>
-                    <div className="flex items-center gap-2 text-white/60 text-sm mt-1">
-                      <Building2 className="w-4 h-4" />
+                    <h4 className="text-sm sm:text-lg font-semibold text-white">{exp.role}</h4>
+                    <div className="flex items-center gap-2 text-white/60 text-xs sm:text-sm mt-1">
+                      <Building2 className="w-3 h-3 sm:w-4 sm:h-4" />
                       {exp.company}
                     </div>
-                    <p className="text-white/40 text-sm mt-2">{exp.description}</p>
+                    <p className="text-white/40 text-xs sm:text-sm mt-1 sm:mt-2">{exp.description}</p>
                   </div>
                 </motion.div>
               ))}
