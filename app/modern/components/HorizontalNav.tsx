@@ -70,13 +70,15 @@ export default function HorizontalNav({ activeSection, onNavigate }: HorizontalN
         </div>
 
         {/* Resume Button */}
-        <motion.button
+        <motion.a
+          href="/asset/cv/CV-HASINARIVELO.pdf"
+          download="CV-HASINARIVELO.pdf"
           className="btn-modern hidden sm:block"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           {t('nav.resume')}
-        </motion.button>
+        </motion.a>
       </div>
     </motion.nav>
   );
