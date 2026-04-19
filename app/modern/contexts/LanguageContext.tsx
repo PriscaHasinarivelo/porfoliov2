@@ -74,8 +74,8 @@ const translations = {
     hero: {
       hello: 'Bonjour,',
       im: 'Je suis',
-      role: 'Prisca HASINARIVELO',
-      role2: '',
+      role: 'Prisca',
+      role2: 'HASINARIVELO',
       description: "Embarquons ensemble dans une aventure visuelle, où chaque pixel raconte une histoire de design réfléchi et de code robuste.",
       discover: 'Découvrir',
       followMe: 'Suivez-moi',
@@ -139,8 +139,8 @@ const translations = {
     hero: {
       hello: 'Hello,',
       im: "I'm",
-      role: 'Prisca HASINARIVELO',
-      role2: '',
+      role: 'Prisca',
+      role2: 'HASINARIVELO',
       description: "Let's embark on a visual adventure together, where every pixel tells a story of thoughtful design and robust code.",
       discover: 'Discover More',
       followMe: 'Follow Me',

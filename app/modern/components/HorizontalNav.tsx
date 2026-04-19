@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, FileText } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitch from './LanguageSwitch';
 import ThemeSwitch from './ThemeSwitch';
+import PDFModal from '../../components/PDFModal';
 
 interface HorizontalNavProps {
   activeSection: number;
@@ -16,6 +17,7 @@ interface HorizontalNavProps {
 export default function HorizontalNav({ activeSection, onNavigate }: HorizontalNavProps) {
   const { t } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPDFOpen, setIsPDFOpen] = useState(false);
 
   const navItems = [
     { label: t('nav.about'), index: 0 },
@@ -99,15 +101,15 @@ export default function HorizontalNav({ activeSection, onNavigate }: HorizontalN
             </div>
 
             {/* Resume Button - Desktop */}
-            <motion.a
-              href="/asset/cv/CV-HASINARIVELO.pdf"
-              download="CV-HASINARIVELO.pdf"
-              className="btn-modern hidden sm:block text-sm px-4 py-2"
+            <motion.button
+              onClick={() => setIsPDFOpen(true)}
+              className="btn-modern hidden sm:flex text-sm px-4 py-2 items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              <FileText className="w-4 h-4" />
               {t('nav.resume')}
-            </motion.a>
+            </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
@@ -168,17 +170,19 @@ export default function HorizontalNav({ activeSection, onNavigate }: HorizontalN
                 ))}
                 
                 {/* Mobile Resume Button */}
-                <motion.a
-                  href="/asset/cv/CV-HASINARIVELO.pdf"
-                  download="CV-HASINARIVELO.pdf"
-                  className="btn-modern mt-4 text-center text-sm"
+                <motion.button
+                  onClick={() => {
+                    setIsPDFOpen(true);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="btn-modern mt-4 text-center text-sm w-full"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   {t('nav.resume')}
-                </motion.a>
+                </motion.button>
                 
                 {/* Mobile Electric Mode Button */}
                 <Link href="/electric" className="mt-2">
@@ -198,6 +202,9 @@ export default function HorizontalNav({ activeSection, onNavigate }: HorizontalN
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* PDF Preview Modal */}
+      <PDFModal isOpen={isPDFOpen} onClose={() => setIsPDFOpen(false)} />
     </>
   );
 }

@@ -60,7 +60,10 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <button className="btn-electric flex items-center gap-2 group cursor-hover">
+              <button 
+                onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-electric flex items-center gap-2 group cursor-hover"
+              >
                 {t.hero.discover}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>

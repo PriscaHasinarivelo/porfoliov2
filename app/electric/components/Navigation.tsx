@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, FileText } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import PDFModal from '../../components/PDFModal';
 
 const navItems = [
   { id: 'hero', label: { fr: 'Accueil', en: 'Home' } },
@@ -18,6 +19,7 @@ export default function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPDFOpen, setIsPDFOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,6 +103,17 @@ export default function Navigation() {
             </div>
 
             <div className="flex items-center gap-3">
+              {/* CV Button - Desktop */}
+              <motion.button
+                onClick={() => setIsPDFOpen(true)}
+                className="hidden lg:flex items-center gap-2 px-3 py-2 rounded-lg bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[#00D4FF] text-sm font-medium hover:bg-[#00D4FF]/20 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FileText className="w-4 h-4" />
+                <span>{lang === 'fr' ? 'CV' : 'Resume'}</span>
+              </motion.button>
+
               {/* Modern Mode Button */}
               <Link href="/" className="hidden lg:flex">
                 <motion.button
@@ -175,13 +188,29 @@ export default function Navigation() {
               </motion.button>
             ))}
             
+            {/* Mobile CV Button */}
+            <motion.button
+              onClick={() => {
+                setIsPDFOpen(true);
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#00FF94]/10 border border-[#00FF94]/30 text-[#00FF94] text-base font-medium mt-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -10 }}
+              transition={{ delay: navItems.length * 0.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <FileText className="w-5 h-5" />
+              <span>{lang === 'fr' ? 'Voir mon CV' : 'View Resume'}</span>
+            </motion.button>
+
             {/* Mobile Modern Mode Button */}
             <Link href="/" className="mt-2">
               <motion.button
                 className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[#00D4FF] text-base font-medium"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -10 }}
-                transition={{ delay: navItems.length * 0.05 }}
+                transition={{ delay: (navItems.length + 1) * 0.05 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Sparkles className="w-5 h-5" />
@@ -191,6 +220,9 @@ export default function Navigation() {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* PDF Preview Modal */}
+      <PDFModal isOpen={isPDFOpen} onClose={() => setIsPDFOpen(false)} />
     </>
   );
 }
