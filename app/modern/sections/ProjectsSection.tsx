@@ -6,53 +6,89 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const projectsData = [
   {
-    title: 'E-Commerce Platform',
-    category: 'Web Development',
-    description: 'Full-stack e-commerce solution with React, Node.js, and PostgreSQL.',
-    year: '2024',
-    image: 'EC',
+    title: 'CRM Billing - TELCO OI',
+    titleFr: 'CRM Billing - TELCO OI',
+    company: 'YAS Madagascar',
+    category: 'Enterprise Application',
+    categoryFr: 'Application Enterprise',
+    description: 'CRM billing system development in Scala for TELCO group.',
+    descriptionFr: 'Développement d\'un système de facturation CRM en Scala pour le groupe TELCO.',
+    year: '2025–2026',
+    image: 'CB',
   },
   {
-    title: 'Mobile Banking App',
-    category: 'Mobile Development',
-    description: 'Secure banking application with React Native and biometric auth.',
-    year: '2023',
-    image: 'MB',
-  },
-  {
-    title: 'Analytics Dashboard',
+    title: 'Statistical Dashboard',
+    titleFr: 'Tableau de bord statistique',
+    company: 'Instat Toamasina',
     category: 'Data Visualization',
-    description: 'Real-time analytics dashboard with D3.js and WebSocket integration.',
-    year: '2023',
-    image: 'AD',
+    categoryFr: 'Visualisation de données',
+    description: 'Data visualization dashboard developed with JavaScript and CodeIgniter.',
+    descriptionFr: 'Développement d\'un tableau de bord de visualisation de données statistiques avec JavaScript et CodeIgniter.',
+    year: '2017',
+    image: 'ST',
   },
   {
-    title: 'AI Chat Assistant',
-    category: 'AI Integration',
-    description: 'Intelligent chatbot with natural language processing capabilities.',
-    year: '2024',
-    image: 'AI',
+    title: 'Pension Management',
+    titleFr: 'Gestion des pensions',
+    company: 'FUNRECO',
+    category: 'Enterprise Application',
+    categoryFr: 'Application Enterprise',
+    description: 'Pension management application developed with JSF.',
+    descriptionFr: 'Application de gestion des pensions développée avec JSF.',
+    year: '2019',
+    image: 'PN',
+  },
+  {
+    title: 'Commercial Management',
+    titleFr: 'Gestion commerciale',
+    company: 'EASY PARK',
+    category: 'Web Development',
+    categoryFr: 'Développement Web',
+    description: 'Commercial management system with Laravel and AngularJS.',
+    descriptionFr: 'Système de gestion commerciale avec Laravel et AngularJS.',
+    year: '2019',
+    image: 'CM',
+  },
+  {
+    title: 'Housing Management',
+    titleFr: 'Gestion de logement',
+    company: 'SOPRASTERIA',
+    category: 'Enterprise Application',
+    categoryFr: 'Application Enterprise',
+    description: 'Enterprise application with Java Spring and Java RCP for housing management.',
+    descriptionFr: 'Application d\'entreprise avec Java Spring et Java RCP pour la gestion de logements.',
+    year: '2020–2024',
+    image: 'ERP',
   },
 ];
 
 const experienceData = [
   {
-    role: 'Senior Full Stack Developer',
-    company: 'Tech Solutions Inc.',
-    period: '2022 - Present',
-    description: 'Leading development of enterprise web applications',
+    role: 'Développeur JAVA/Scala',
+    roleEn: 'JAVA/Scala Developer',
+    company: 'YAS Madagascar – TELCO OI La Réunion – Group AXIAN',
+    period: 'Mai 2025 – Aujourd\'hui',
+    periodEn: 'May 2025 – Present',
+    description: 'Développement d\'applications JAVA/Scala pour le groupe TELCO',
+    descriptionEn: 'Development of JAVA/Scala applications for TELCO group',
   },
   {
-    role: 'Full Stack Developer',
-    company: 'Digital Agency',
-    period: '2020 - 2022',
-    description: 'Built scalable applications for diverse clients',
+    role: 'Ingénieur d\'étude et de développement',
+    roleEn: 'Software Engineer',
+    company: 'SNEDAMADA / Soprasteria Nantes',
+    period: 'Mars 2020 – Juin 2024',
+    periodEn: 'Mar 2020 – Jun 2024',
+    description: 'Conception et développement de solutions d\'entreprise',
+    descriptionEn: 'Design and development of enterprise solutions',
   },
   {
-    role: 'Junior Developer',
-    company: 'StartUp Hub',
-    period: '2019 - 2020',
-    description: 'Started journey in web development',
+    role: 'Développeur Junior',
+    roleEn: 'Junior Developer',
+    company: 'EASY PARK / FUNRECO',
+    period: 'Mars 2019 – Janvier 2020',
+    periodEn: 'Mar 2019 – Jan 2020',
+    description: 'Première expérience en développement web',
+    descriptionEn: 'First experience in web development',
   },
 ];
 
@@ -73,30 +109,41 @@ export default function ProjectsSection() {
   const { t, lang } = useLanguage();
   
   const projects = lang === 'fr' ? [
-    { title: 'Plateforme E-Commerce', category: 'Développement Web', description: 'Solution e-commerce full-stack avec React, Node.js et PostgreSQL.', year: '2024', image: 'EC' },
-    { title: 'App Mobile Bancaire', category: 'Développement Mobile', description: 'Application bancaire sécurisée avec React Native et authentification biométrique.', year: '2023', image: 'MB' },
-    { title: 'Tableau de Bord Analytics', category: 'Visualisation de Données', description: 'Tableau de bord temps réel avec D3.js et intégration WebSocket.', year: '2023', image: 'AD' },
-    { title: 'Assistant Chat IA', category: 'Intégration IA', description: 'Chatbot intelligent avec capacités de traitement du langage naturel.', year: '2024', image: 'AI' },
-  ] : projectsData;
+    { title: 'CRM Billing - TELCO OI', category: 'Application Enterprise', company: 'YAS Madagascar', description: 'Développement d\'un système de facturation CRM en Scala pour le groupe TELCO.', year: '2025–2026', image: 'CB' },
+    { title: 'Tableau de bord statistique', category: 'Visualisation de données', company: 'Instat Toamasina', description: 'Développement d\'un tableau de bord de visualisation de données statistiques avec JavaScript et CodeIgniter.', year: '2017', image: 'ST' },
+    { title: 'Gestion des pensions', category: 'Application Enterprise', company: 'FUNRECO', description: 'Application de gestion des pensions développée avec JSF.', year: '2019', image: 'PN' },
+    { title: 'Gestion commerciale', category: 'Développement Web', company: 'EASY PARK', description: 'Système de gestion commerciale avec Laravel et AngularJS.', year: '2019', image: 'CM' },
+    { title: 'Gestion de logement', category: 'Application Enterprise', company: 'SOPRASTERIA', description: 'Application d\'entreprise avec Java Spring et Java RCP pour la gestion de logements.', year: '2020–2024', image: 'ERP' },
+  ] : [
+    { title: 'CRM Billing - TELCO OI', category: 'Enterprise Application', company: 'YAS Madagascar', description: 'CRM billing system development in Scala for TELCO group.', year: '2025–2026', image: 'CB' },
+    { title: 'Statistical Dashboard', category: 'Data Visualization', company: 'Instat Toamasina', description: 'Data visualization dashboard developed with JavaScript and CodeIgniter.', year: '2017', image: 'ST' },
+    { title: 'Pension Management', category: 'Enterprise Application', company: 'FUNRECO', description: 'Pension management application developed with JSF.', year: '2019', image: 'PN' },
+    { title: 'Commercial Management', category: 'Web Development', company: 'EASY PARK', description: 'Commercial management system with Laravel and AngularJS.', year: '2019', image: 'CM' },
+    { title: 'Housing Management', category: 'Enterprise Application', company: 'SOPRASTERIA', description: 'Enterprise application with Java Spring and Java RCP for housing management.', year: '2020–2024', image: 'ERP' },
+  ];
   
   const experience = lang === 'fr' ? [
-    { role: 'Développeuse Full Stack Senior', company: 'Tech Solutions Inc.', period: '2022 - Présent', description: 'Direction du développement d\'applications web enterprise' },
-    { role: 'Développeuse Full Stack', company: 'Agence Digitale', period: '2020 - 2022', description: 'Construction d\'applications évolutives pour divers clients' },
-    { role: 'Développeuse Junior', company: 'StartUp Hub', period: '2019 - 2020', description: 'Début du parcours en développement web' },
-  ] : experienceData;
+    { role: 'Développeur JAVA/Scala', company: 'YAS Madagascar – TELCO OI La Réunion – Group AXIAN', period: 'Mai 2025 – Aujourd\'hui', description: 'Développement d\'applications JAVA/Scala pour le groupe TELCO' },
+    { role: 'Ingénieur d\'étude et de développement', company: 'SNEDAMADA / Soprasteria Nantes', period: 'Mars 2020 – Juin 2024', description: 'Conception et développement de solutions d\'entreprise' },
+    { role: 'Développeur Junior', company: 'EASY PARK / FUNRECO', period: 'Mars 2019 – Janvier 2020', description: 'Première expérience en développement web' },
+  ] : [
+    { role: 'JAVA/Scala Developer', company: 'YAS Madagascar – TELCO OI La Réunion – Group AXIAN', period: 'May 2025 – Present', description: 'Development of JAVA/Scala applications for TELCO group' },
+    { role: 'Software Engineer', company: 'SNEDAMADA / Soprasteria Nantes', period: 'Mar 2020 – Jun 2024', description: 'Design and development of enterprise solutions' },
+    { role: 'Junior Developer', company: 'EASY PARK / FUNRECO', period: 'Mar 2019 – Jan 2020', description: 'First experience in web development' },
+  ];
   
   return (
     <section className="section-panel flex items-center justify-center px-8 lg:px-16 pt-20">
       <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <motion.div
-          className="mb-12"
+          className="mb-12 mt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-[#ffa101] font-medium tracking-wider text-sm">{t('projects.subtitle')}</span>
-          <h2 className="text-4xl lg:text-5xl font-bold mt-2">
+          <span className="text-[#ffa101] font-medium tracking-wider text-sm block mb-3">{t('projects.subtitle')}</span>
+          <h2 className="text-4xl lg:text-5xl font-bold">
             {t('projects.title1')} <span className="gradient-text-orange">{t('projects.title2')}</span>
           </h2>
         </motion.div>
@@ -104,7 +151,7 @@ export default function ProjectsSection() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Projects Grid - Takes 2 columns */}
           <motion.div
-            className="lg:col-span-2 grid sm:grid-cols-2 gap-6"
+            className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-3 gap-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -114,24 +161,24 @@ export default function ProjectsSection() {
               <motion.div
                 key={project.title}
                 variants={itemVariants}
-                className="project-card-modern group cursor-pointer p-6"
-                whileHover={{ y: -10 }}
+                className="project-card-modern group cursor-pointer p-4"
+                whileHover={{ y: -5 }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#ffa101] to-[#ff7b35] flex items-center justify-center text-white font-bold text-lg">
+                <div className="flex items-start justify-between mb-2">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#ffa101] to-[#ff7b35] flex items-center justify-center text-white font-bold text-sm">
                     {project.image}
                   </div>
                   <motion.div
-                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <ArrowUpRight className="w-5 h-5 text-[#ffa101]" />
+                    <ArrowUpRight className="w-4 h-4 text-[#ffa101]" />
                   </motion.div>
                 </div>
-                <span className="text-[#ffa101] text-sm font-medium">{project.category}</span>
-                <h3 className="text-xl font-semibold text-white mt-1 mb-2">{project.title}</h3>
-                <p className="text-white/50 text-sm mb-4">{project.description}</p>
-                <span className="text-white/30 text-xs">{project.year}</span>
+                <span className="text-[#ffa101] text-xs font-medium">{project.category}</span>
+                <h3 className="text-sm font-semibold text-white mt-1 mb-1 leading-tight">{project.title}</h3>
+                <p className="text-white/50 text-xs mb-2 line-clamp-2">{project.description}</p>
+                <span className="text-white/30 text-[10px]">{project.year}</span>
               </motion.div>
             ))}
           </motion.div>

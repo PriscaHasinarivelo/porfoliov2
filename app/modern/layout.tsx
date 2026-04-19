@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./styles.css";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Prisca | Modern Portfolio",
@@ -13,10 +14,12 @@ export default function ModernLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <LanguageProvider>
-      <div className="modern-portfolio">
-        {children}
-      </div>
-    </LanguageProvider>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <LanguageProvider>
+        <div className="modern-portfolio">
+          {children}
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

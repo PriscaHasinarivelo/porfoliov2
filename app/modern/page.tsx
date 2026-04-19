@@ -2,9 +2,12 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from './contexts/LanguageContext';
 import HorizontalNav from './components/HorizontalNav';
 import SectionDots from './components/SectionDots';
 import FloatingShapes from './components/FloatingShapes';
+import WelcomeDialog from './components/WelcomeDialog';
+import LinkedInQRCode from './components/LinkedInQRCode';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import ProjectsSection from './sections/ProjectsSection';
@@ -20,6 +23,7 @@ const sections = [
 export default function ModernPortfolio() {
   const [activeSection, setActiveSection] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const { lang } = useLanguage();
 
   // Check for mobile viewport
   useEffect(() => {
@@ -91,8 +95,19 @@ export default function ModernPortfolio() {
 
   const CurrentSection = sections[activeSection].component;
 
+  // Handle explore from welcome dialog
+  const handleExplore = () => {
+    navigateToSection(1); // Go to about section
+  };
+
   return (
     <div className="modern-portfolio">
+      {/* Welcome Dialog */}
+      <WelcomeDialog onExplore={handleExplore} />
+
+      {/* LinkedIn QR Code - Fixed bottom right, only visible on About section */}
+      <LinkedInQRCode activeSection={activeSection} />
+
       {/* Navigation */}
       <HorizontalNav 
         activeSection={activeSection} 
@@ -132,32 +147,32 @@ export default function ModernPortfolio() {
           {isMobile ? (
             // Mobile: Vertical scroll
             <div className="w-full h-full overflow-y-auto">
-              <div className="min-h-screen">
-                <HeroSection />
+              <div className="min-h-screen" key={`hero-${lang}`}>
+                <HeroSection onNavigate={navigateToSection} />
               </div>
-              <div className="min-h-screen">
+              <div className="min-h-screen" key={`about-${lang}`}>
                 <AboutSection />
               </div>
-              <div className="min-h-screen">
+              <div className="min-h-screen" key={`projects-${lang}`}>
                 <ProjectsSection />
               </div>
-              <div className="min-h-screen">
+              <div className="min-h-screen" key={`contact-${lang}`}>
                 <ContactSection />
               </div>
             </div>
           ) : (
             // Desktop: Horizontal slide
             <>
-              <div className="w-screen h-full flex-shrink-0">
-                <HeroSection />
+              <div className="w-screen h-full flex-shrink-0" key={`hero-${lang}`}>
+                <HeroSection onNavigate={navigateToSection} />
               </div>
-              <div className="w-screen h-full flex-shrink-0">
+              <div className="w-screen h-full flex-shrink-0" key={`about-${lang}`}>
                 <AboutSection />
               </div>
-              <div className="w-screen h-full flex-shrink-0">
+              <div className="w-screen h-full flex-shrink-0" key={`projects-${lang}`}>
                 <ProjectsSection />
               </div>
-              <div className="w-screen h-full flex-shrink-0">
+              <div className="w-screen h-full flex-shrink-0" key={`contact-${lang}`}>
                 <ContactSection />
               </div>
             </>

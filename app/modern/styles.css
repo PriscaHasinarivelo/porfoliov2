@@ -20,6 +20,120 @@
   width: 100vw;
 }
 
+/* ===== LIGHT THEME ===== */
+.light .modern-portfolio {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  color: #1e293b;
+}
+
+.light .glass-card-modern {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 161, 1, 0.3);
+}
+
+.light .project-card-modern {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 161, 1, 0.2);
+}
+
+.light .stat-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 161, 1, 0.3);
+}
+
+.light .form-input-modern {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+}
+
+.light .form-input-modern::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.light .nav-link-modern {
+  color: rgba(30, 41, 59, 0.7);
+}
+
+.light .nav-link-modern:hover,
+.light .nav-link-modern.active {
+  color: #ffa101;
+}
+
+.light .section-dot {
+  background: rgba(30, 41, 59, 0.3);
+}
+
+.light .social-icon-modern {
+  background: rgba(0, 0, 0, 0.05);
+  color: #ffa101;
+}
+
+.light .social-icon-modern:hover {
+  background: #ffa101;
+  color: white;
+}
+
+/* ===== LIGHT THEME TEXT COLORS ===== */
+.light .modern-portfolio [class*="text-white"] {
+  color: #1e293b;
+}
+
+.light .modern-portfolio [class*="text-white/70"],
+.light .modern-portfolio [class*="text-white/60"] {
+  color: #475569;
+}
+
+.light .modern-portfolio [class*="text-white/50"],
+.light .modern-portfolio [class*="text-white/40"] {
+  color: #64748b;
+}
+
+.light .modern-portfolio [class*="text-white/30"] {
+  color: #94a3b8;
+}
+
+.light .modern-portfolio [class*="text-white/20"] {
+  color: #cbd5e1;
+}
+
+/* Specific fixes for Contact section */
+.light .modern-portfolio .text-white\/40 {
+  color: #64748b !important;
+}
+
+.light .modern-portfolio .text-white\/60 {
+  color: #475569 !important;
+}
+
+.light .modern-portfolio .text-white\/70 {
+  color: #334155 !important;
+}
+
+.light .modern-portfolio .font-medium.text-white {
+  color: #0f172a;
+}
+
+.light .modern-portfolio h1[class*="text-white"],
+.light .modern-portfolio h2[class*="text-white"],
+.light .modern-portfolio h3[class*="text-white"],
+.light .modern-portfolio h4[class*="text-white"] {
+  color: #0f172a;
+}
+
+.light .modern-portfolio p[class*="text-white"] {
+  color: #334155;
+}
+
+.light .modern-portfolio span[class*="text-white"] {
+  color: #475569;
+}
+
+/* Keep orange accent */
+.light .modern-portfolio [class*="text-[#ffa101]"] {
+  color: #ff7b00 !important;
+}
+
 /* ===== HORIZONTAL SLIDE CONTAINER ===== */
 .slide-container {
   display: flex;

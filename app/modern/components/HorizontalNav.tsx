@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitch from './LanguageSwitch';
+import ThemeSwitch from './ThemeSwitch';
 
 interface HorizontalNavProps {
   activeSection: number;
@@ -60,6 +61,9 @@ export default function HorizontalNav({ activeSection, onNavigate }: HorizontalN
               )}
             </motion.button>
           ))}
+          
+          {/* Theme Switch */}
+          <ThemeSwitch />
           
           {/* Language Switch */}
           <LanguageSwitch />

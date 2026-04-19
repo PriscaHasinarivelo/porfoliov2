@@ -74,8 +74,8 @@ const translations = {
     hero: {
       hello: 'Bonjour,',
       im: 'Je suis',
-      role: 'Développeuse',
-      role2: 'Full Stack',
+      role: 'Prisca',
+      role2: 'Développeuse JAVA Full-Stack',
       description: "Embarquons ensemble dans une aventure visuelle, où chaque pixel raconte une histoire de design réfléchi et de code robuste.",
       discover: 'Découvrir',
       followMe: 'Suivez-moi',
@@ -89,8 +89,8 @@ const translations = {
       subtitle: 'À PROPOS DE MOI',
       title1: 'Créer des Expériences',
       title2: 'Digitales',
-      description1: 'Développeuse Full Stack passionnée avec plus de 5 ans d\'expérience dans la construction d\'applications web et mobiles évolutives. Je me spécialise dans la création de solutions élégantes qui combinent un design magnifique avec une fonctionnalité puissante.',
-      description2: 'Mon parcours dans la tech a commencé avec le développement Java, et j\'ai depuis élargi mon expertise aux frameworks JavaScript modernes, aux technologies cloud et au développement mobile. Je crois en l\'écriture de code propre et maintenable.',
+      description1: 'Développeuse Java passionnée avec plus de 6 ans d\'expérience dans la conception et le développement d\'applications web et de solutions d\'entreprise. Je me spécialise dans la création de systèmes robustes, évolutifs et maintenables, avec une forte expertise sur les environnements ERP et CRM.',
+      description2: 'Mon parcours a débuté avec le développement Java (Spring, J2EE), et s\'est enrichi au fil des projets avec des technologies web modernes et des architectures orientées services. Habituée aux environnements complexes, je privilégie un code propre, structuré et orienté performance.',
       stats: {
         projects: 'Projets',
         years: 'Années Exp.',
@@ -102,7 +102,7 @@ const translations = {
       subtitle: 'PORTFOLIO',
       title1: 'Projets',
       title2: 'Réalisés',
-      experienceTitle: 'Expérience',
+      experienceTitle: 'Expériences',
     },
     contact: {
       subtitle: 'CONTACT',
@@ -139,8 +139,8 @@ const translations = {
     hero: {
       hello: 'Hello,',
       im: "I'm",
-      role: 'A Full Stack',
-      role2: 'Developer',
+      role: 'Prisca',
+      role2: 'JAVA Full-Stack Developer',
       description: "Let's embark on a visual adventure together, where every pixel tells a story of thoughtful design and robust code.",
       discover: 'Discover More',
       followMe: 'Follow Me',
@@ -154,8 +154,8 @@ const translations = {
       subtitle: 'ABOUT ME',
       title1: 'Crafting Digital',
       title2: 'Experiences',
-      description1: 'Passionate Full Stack Developer with 5+ years of experience building scalable web and mobile applications. I specialize in creating elegant solutions that combine beautiful design with powerful functionality.',
-      description2: 'My journey in tech started with Java development, and I\'ve since expanded my expertise to modern JavaScript frameworks, cloud technologies, and mobile development. I believe in writing clean, maintainable code.',
+      description1: 'Passionate Java Developer with over 6 years of experience in designing and developing web applications and enterprise solutions. I specialize in creating robust, scalable, and maintainable systems, with strong expertise in ERP and CRM environments.',
+      description2: 'My journey began with Java development (Spring, J2EE), and has grown through projects with modern web technologies and service-oriented architectures. Accustomed to complex environments, I prioritize clean, structured, and performance-oriented code.',
       stats: {
         projects: 'Projects',
         years: 'Years Exp.',
@@ -167,7 +167,7 @@ const translations = {
       subtitle: 'PORTFOLIO',
       title1: 'Featured',
       title2: 'Projects',
-      experienceTitle: 'Experience',
+      experienceTitle: 'Experiences',
     },
     contact: {
       subtitle: 'GET IN TOUCH',

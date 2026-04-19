@@ -1,16 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code, Database, Globe, Smartphone, Palette, Server } from 'lucide-react';
+import { Code, Database, Globe, Palette, Server, Sparkles } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const skills = [
-  { name: 'React / Next.js', level: 95, icon: Code },
-  { name: 'Java / Spring Boot', level: 90, icon: Server },
-  { name: 'Node.js / Express', level: 88, icon: Database },
-  { name: 'Mobile / React Native', level: 85, icon: Smartphone },
-  { name: 'UI/UX Design', level: 80, icon: Palette },
-  { name: 'DevOps / Cloud', level: 75, icon: Globe },
+  { name: 'JAVA', level: 85, icon: Server },
+  { name: 'React', level: 70, icon: Code },
+  { name: 'DevOps', level: 55, icon: Globe },
+  { name: 'UI/UX Design', level: 70, icon: Palette },
+  { name: 'AI Utils', level: 50, icon: Sparkles },
+  { name: 'DataBase', level: 90, icon: Database },
 ];
 
 const containerVariants = {
@@ -31,19 +31,19 @@ const itemVariants = {
 export default function AboutSection() {
   const { t, lang } = useLanguage();
   const skillsLabels = lang === 'fr' ? [
-    { name: 'React / Next.js', level: 95, icon: Code },
-    { name: 'Java / Spring Boot', level: 90, icon: Server },
-    { name: 'Node.js / Express', level: 88, icon: Database },
-    { name: 'Mobile / React Native', level: 85, icon: Smartphone },
-    { name: 'UI/UX Design', level: 80, icon: Palette },
-    { name: 'DevOps / Cloud', level: 75, icon: Globe },
+    { name: 'JAVA', level: 85, icon: Server },
+    { name: 'React', level: 70, icon: Code },
+    { name: 'DevOps', level: 55, icon: Globe },
+    { name: 'UI/UX Design', level: 70, icon: Palette },
+    { name: 'AI Utils', level: 50, icon: Sparkles },
+    { name: 'DataBase', level: 90, icon: Database },
   ] : [
-    { name: 'React / Next.js', level: 95, icon: Code },
-    { name: 'Java / Spring Boot', level: 90, icon: Server },
-    { name: 'Node.js / Express', level: 88, icon: Database },
-    { name: 'Mobile / React Native', level: 85, icon: Smartphone },
-    { name: 'UI/UX Design', level: 80, icon: Palette },
-    { name: 'DevOps / Cloud', level: 75, icon: Globe },
+    { name: 'JAVA', level: 85, icon: Server },
+    { name: 'React', level: 70, icon: Code },
+    { name: 'DevOps', level: 55, icon: Globe },
+    { name: 'UI/UX Design', level: 70, icon: Palette },
+    { name: 'AI Utils', level: 50, icon: Sparkles },
+    { name: 'DataBase', level: 90, icon: Database },
   ];
   
   return (
@@ -82,16 +82,16 @@ export default function AboutSection() {
 
           <motion.div variants={itemVariants} className="flex gap-8 pt-4">
             <div className="text-center">
-              <div className="text-4xl font-bold gradient-text-orange">50+</div>
-              <div className="text-sm text-white/50">{t('about.stats.projects')}</div>
+              <div className="text-4xl font-bold gradient-text-orange">3</div>
+              <div className="text-sm text-white/50">{lang === 'fr' ? 'Grands Projets' : 'Major Projects'}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold gradient-text-orange">5+</div>
-              <div className="text-sm text-white/50">{t('about.stats.years')}</div>
+              <div className="text-4xl font-bold gradient-text-orange">6</div>
+              <div className="text-sm text-white/50">{lang === 'fr' ? 'Ans Exp.' : 'Years Exp.'}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold gradient-text-orange">30+</div>
-              <div className="text-sm text-white/50">{t('about.stats.clients')}</div>
+              <div className="text-4xl font-bold gradient-text-orange">3</div>
+              <div className="text-sm text-white/50">{lang === 'fr' ? 'Entreprises' : 'Companies'}</div>
             </div>
           </motion.div>
         </motion.div>
